@@ -10,8 +10,9 @@ import pickle
 
 st.set_page_config(layout = "wide")
 
+user_input = st.text_input("Input a stock ticker", "GOOG")
 
-data = yf.download(tickers = 'GOOG')
+data = yf.download(tickers = user_input)
 # Explaination 
 
 st.title("Initial Model")
