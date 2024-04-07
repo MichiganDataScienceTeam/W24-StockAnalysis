@@ -12,6 +12,10 @@ st.set_page_config(layout = "wide")
 
 user_input = st.text_input("Input a stock ticker", "GOOG")
 
+tick = yf.Ticker(user_input)
+
+company_name = tick.info['longName']
+
 data = yf.download(tickers = user_input)
 # Explaination 
 
@@ -33,7 +37,7 @@ with cc1:
 
 
 with cc2:
-    st.subheader("Closing Prices of Google")
+    st.subheader(f"Closing Prices of {company_name}")
     st.line_chart(data=data["Adj Close"])
 
 st.header("Feature Engineering", divider="gray")
